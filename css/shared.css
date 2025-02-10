@@ -1,0 +1,175 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  background-color: rgb(44, 41, 38);
+}
+
+a {
+  text-decoration: none;
+}
+
+#main-header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* bo awya la headeraka logo u linkakan bkawna sar haman ast (xal) la tawary x u y*/
+  background-color: rgb(29, 26, 24);
+  padding: 0 5%;
+}
+
+#logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(238, 164, 80);
+  text-transform: uppercase;
+}
+
+.menu-btn {
+  width: 48px;
+  height: 48px;
+  display: flex; /* chunka span none sematic inline elemnta boya baqat contentakay width dager dakat u hamu spanakan badway yak dabn ballam ema contanaraka ka mabastman la tage A dakain ba flex tawau ba kaef xoman daskare shene elemntakan bkain u btwanen line ladway laine (new line) spanakan da bnernen*/
+  flex-direction: column; /* ama bo awaya contentacan ka mabastman la spana lera har danayak bkaweta line nwe (line by line ) by defoult ama nrxakay la flexa row ballam ema daikain ba colomn*/
+  justify-content: space-around; /* ama bo awaya space la dawr har contente drust bkat mabastaman (span) akana*/
+  /* display: none; bo awya btn humbergraka dar nakawe la hamu device akan dabe tanha wa bkain la device screen bchukakan darbkawe awshesh la regay mediia daikaen */
+  display: none;
+}
+
+.menu-btn span {
+  width: 100%; /* ama bo awya hamu widthe contener (parent ) warbgre*/
+  height: 3px; /* ballam lera barze xatakane span ba pexel be bashta tawaku nagore ba gorane screen yan widthe mobile aka*/
+  background-color: white;
+}
+
+#main-header ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+#main-header li {
+  margin: 0 16px;
+  position: relative;
+}
+
+#main-header nav a {
+  color: rgb(185, 131, 31);
+  font-size: 20px;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease,
+    box-shadow 0.3s ease;
+  padding: 8px 20px;
+  display: inline-block;
+  position: relative;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#main-header nav a:hover,
+#side-drawer nav a:hover {
+  color: rgb(228, 163, 44);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: rgba(238, 164, 80, 0.2);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#main-header nav a:focus,
+#main-header nav a:active,
+#side-drawer nav a:focus,
+#side-drawer nav a:active {
+  outline: none;
+  box-shadow: 0 0 5px rgba(238, 164, 80, 0.8);
+}
+
+#main-header li::after,
+#side-drawer li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(228, 163, 44);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+#main-header li:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+#side-drawer {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(29, 26, 27);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none; /* sarata display none ballam way le dakain ka click lasar buttene hambargraka kra awkat dar bkawet */
+}
+
+/* side-drawer:target lera target bo awa bakar det katek click la linkaka dakret idyak zyad dabet bo urlaka aw check dakat agar id zyad bu yan bllen bange aw idya kra awa aw code run dabet */
+
+#side-drawer:target {
+  display: block;
+}
+
+#side-drawer header {
+  height: 80px;
+  display: flex;
+  justify-content: flex-end; /* bo awaya .la side drawer humbergraka bbata lay rast */
+  align-items: center; /* bo awya la headeraka logo u linkakan bkawna sar haman ast (xal) la tawary x u y*/
+  padding: 0 5%;
+}
+
+#side-drawer ul {
+  list-style: none;
+  margin: 0;
+  padding: 64px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#side-drawer li {
+  margin: 16px 0;
+}
+
+#side-drawer a {
+  color: rgb(253, 239, 213);
+  font-size: 32px;
+}
+
+/* media queries bakar det bo resposive kdne website chand parametreke haya ka waku maj kar dakan agar aw marjay peka awa aw styleanay dyareman krdwa dagoren
+1- max-width : wata agar width screen browser la 0 ta aw widtha nusebut awa marjaka rast dar dache u styleakan dagoren
+2- min-width: wata agar width screen browser la nrxe min-width yan basarawa tr bu law nrxa awa marjaka rast dar dache u styleakan dagoren
+3- Comma separated list: add an additional media query to an already existing one, using a comma (this will behave like an OR operator):
+*/
+
+@media (max-width: 768px) {
+  #main-header nav {
+    display: none; /* bo shardnaway navigatinakaya la mobile*/
+  }
+
+  .menu-btn {
+    /* bo awya agar deviceaka screen bchuk bu wak mobile u awana awkat buttone humbergraka darbkawe */
+    display: flex;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #main-header nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
+
+  main h1 {
+    font-size: 20px;
+  }
+}
